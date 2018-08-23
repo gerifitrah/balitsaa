@@ -11,8 +11,10 @@
 		}
 
 	public function tampil(){
+		$data['pegawai'] = $this->m_permohonan->dataPemohon();
+		$data['blok'] = $this->m_permohonan->dataLahan();
 		$this->load->helper('url');
-		$this->load->view('v_permohonan');
+		$this->load->view('v_permohonan',$data);
 	}
 
 	public function tampil_admin(){

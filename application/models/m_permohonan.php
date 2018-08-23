@@ -13,6 +13,18 @@ class M_permohonan extends CI_Model {
 		return $this->db->get('t_login')->row();
 	}
 
+	public function dataPemohon(){
+		 return $this->db->query('SELECT * FROM t_peneliti AS pe, t_login AS lo WHERE pe.nip = lo.nip')->result();
+	}
+
+	public function dataLahan(){
+		return $this->db->query('SELECT * FROM t_lahan')->result();
+	}
+
+	public function dataLuasLahan(){
+		return $this->db->query('SELECT * FROM t_lahan')->result();
+	}
+
 	public function insert_permohonan(){
 		$no = $this->input->post('no');
 		$nama = $this->input->post('nama');
@@ -20,7 +32,7 @@ class M_permohonan extends CI_Model {
 		$penanggung = $this->input->post('penanggung');
 		$sumber = $this->input->post('sumber');
 		$judul = $this->input->post('judul');
-		//$kode = $this->input->post('kode');
+		$kode = $this->input->post('kode');
 		$mulai = $this->input->post('mulai');
 		$akhir = $this->input->post('akhir');
 		$komoditas = $this->input->post('komoditas');
@@ -37,7 +49,7 @@ class M_permohonan extends CI_Model {
 				'penanggung_jawab'=> $penanggung,
 				'sumber_dana'=>$sumber,
 				'judul_kegiatan'=> $judul,
-				//'kd_kegiatan'=> $kode,
+				'kd_kegiatan'=> $kode,
 				'waktu_mulai'=>$mulai,
 				'waktu_selesai'=>$akhir,
 				'komoditas'=> $komoditas,
@@ -49,6 +61,7 @@ class M_permohonan extends CI_Model {
 		return $this->db->insert('t_permohonan',$object);
 
 	}
+
 public function data_permohonan(){
 	return $this->db->get('t_permohonan');
 }
