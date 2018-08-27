@@ -13,8 +13,9 @@ class M_permohonan extends CI_Model {
 		return $this->db->get('t_login')->row();
 	}
 
-	public function dataPemohon(){
-		 return $this->db->query('SELECT * FROM t_peneliti AS pe, t_login AS lo WHERE pe.nip = lo.nip')->result();
+	public function dataPemohon($nip_user){
+		 // return $this->db->query('SELECT * FROM t_peneliti AS pe INNER JOIN t_login AS lo WHERE pe.nip = "195407051979021001"')->result();
+		 return $this->db->query("SELECT * FROM t_login tl INNER JOIN t_peneliti tp ON tp.nip = tl.nip WHERE tp.nip = '${nip_user}'")->result();
 	}
 
 	public function dataLahan(){
@@ -27,6 +28,7 @@ class M_permohonan extends CI_Model {
 
 	public function insert_permohonan(){
 		$no = $this->input->post('no');
+		$nip = $this->input->post('nip');
 		$nama = $this->input->post('nama');
 		$kelompok = $this->input->post('kelompok');
 		$penanggung = $this->input->post('penanggung');
@@ -41,9 +43,8 @@ class M_permohonan extends CI_Model {
 		$no_lahan = $this->input->post('no_lahan');
 		$tanaman = $this->input->post('tanaman');
 		$object = array(
-
-				'no_permintaan'=> $no,
-				'nip'=> null,
+				'no_permohonan'=> $no,
+				'nip'=> $nip,
 				'nm_peneliti'=> $nama,
 				'klmpok_peneliti'=> $kelompok,
 				'penanggung_jawab'=> $penanggung,
@@ -58,6 +59,7 @@ class M_permohonan extends CI_Model {
 				'tanaman_sebelumnya'=> $tanaman,
 				'keterangan'=> 'Belum Acc'
 			);
+			// print_r($object);
 		return $this->db->insert('t_permohonan',$object);
 
 	}

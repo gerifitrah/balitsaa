@@ -4,10 +4,12 @@
 	<title></title>
 </head>
 <body>
-	<table border="2">
+	<div style="overflow-x:auto;">
+	<table border="2" >
 		<thead>
 			<tr>
 				<th>No</th>
+				<th>No permohonan</th>
 				<th>NIP</th>
 				<th>Nama Peneliti</th>
 				<th>Judul Kegitan</th>
@@ -19,6 +21,7 @@
 				foreach($data as $Permohonan):?>
 			<tr>
 				<td><?php echo $no ?></td>
+				<td><?php echo $Permohonan['no_permohonan']; ?></td>
 				<td><?php echo $Permohonan['nip']; ?></td>
 				<td><?php echo $Permohonan['nm_peneliti']; ?></td>
 				<td><?php echo $Permohonan['judul_kegiatan']; ?></td>
@@ -28,5 +31,6 @@
 			<?php $no++; endforeach; ?>
 		</tbody>
 	</table>
+</div>
 </body>
 </html>

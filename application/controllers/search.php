@@ -11,7 +11,8 @@
 		}
 
 	public function tampil(){
-		$data['pegawai'] = $this->m_permohonan->dataPemohon();
+		$nip_user = $this->session->userdata('loger');
+		$data['pegawai'] = $this->m_permohonan->dataPemohon($nip_user);
 		$data['blok'] = $this->m_permohonan->dataLahan();
 		$this->load->helper('url');
 		$this->load->view('v_permohonan',$data);

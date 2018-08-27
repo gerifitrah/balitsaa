@@ -26,17 +26,20 @@ class C_permohonan extends CI_Controller {
 		if ($hasil>0) {
 			if($otoritas == 'peneliti'){
 					$select = $this->db->get_where('t_login',array('username'=>$username, 'password'=>$username,'otoritas'=>$otoritas))->row();
-					$data = array('logged_in' =>true ,'loger'=> $select->nama );
+					$data = array('logged_in' =>true ,'loger'=> $username );
 					$this->session->set_userdata($data);
 
-					redirect('search/tampil')	;
+					$this->load->view('v_dPeneliti');
+					//redirect('search/tampil')	;
+
 
 		} else if($otoritas == 'admin'){
 				$select = $this->db->get_where('t_login',array('username'=>$username, 'password'=>$username,'otoritas'=>$otoritas))->row();
-				$data = array('logged_in' =>true ,'loger'=> $select->nama );
+						$data = array('logged_in' =>true ,'loger'=> $username );
 				$this->session->set_userdata($data);
 
-				redirect('search/tampil_admin');
+				$this->load->view('v_dAdmin');
+				//redirect('search/tampil_admin')
 
 		}
 		// $this->form_validation->set_rules('username', 'Username', 'required');
@@ -54,10 +57,10 @@ class C_permohonan extends CI_Controller {
 	}
 
 	public function masuk(){
-		$data['pegawai'] = $this->m_permohonan->dataPemohon();
+		$nip_user = $this->session->userdata('loger');
+		$data['pegawai'] = $this->m_permohonan->dataPemohon($nip_user);
 		$data['blok'] = $this->m_permohonan->dataLahan();
 		$this->load->library('form_validation');
-
 		$this->form_validation->set_rules('kelompok', 'kelompok', 'required');
     $this->form_validation->set_rules('penanggung', 'penanggung', 'required');
 
@@ -68,13 +71,14 @@ class C_permohonan extends CI_Controller {
                 else
                 {
                         $this->m_permohonan->insert_permohonan();
+												$this->load->view('v_dPeneliti');
                 }
 	}
 
 
 	public function tampil_konfirmasi(){
 	$id = array(
-			'no' => $this->input->get('id')
+			'no_permohonan' => $this->input->get('id')
 		);
 		$data['detail'] = $this->m_permohonan->data_konfirmasi($id,'t_permohonan')->result();
 		$this->load->view('v_konfirmasi',$data);

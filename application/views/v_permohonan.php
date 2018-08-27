@@ -6,18 +6,22 @@
 	<title>Form Pengajuan</title>
 </head>
 <body>
-
+  <?php echo validation_errors(); ?>
+  <?php foreach ($pegawai as $peg):?>
 		<form style="width: 500px;" method="POST" action="<?= base_url('index.php/c_permohonan/masuk'); ?>">
-			<?php echo validation_errors(); ?>
-			<?php foreach ($pegawai as $peg):?>
-			<div class="form-group">
+		  <div class="form-group">
 		    <label>No. Permohonan</label>
-		    <input  class="form-control" id="no" name="no" placeholder="No Secara Otomatis">
+		    <input  class="form-control" id="no" name="no" placeholder="No Secara Otomatis" readonly>
 		  </div>
 		  <div class="form-group">
 		    <label>Nama Peneliti</label>
-		    <input  class="form-control" id="nama" name="nama" value="<?php echo $peg->nm_peneliti?>" >
+		    <input  class="form-control" id="nama" name="nama" value="<?= $peg->nm_peneliti?>" readonly>
 		  </div>
+			<div class="form-group">
+				<label>NIP</label>
+				<input  class="form-control" id="nip" name="nip" value="<?= $peg->nip?>" readonly>
+			</div>
+			<?php endforeach;?>
 		  <div class="form-group">
 		    <label>Kelompok Peneliti</label>
 		    <input  class="form-control" id="kelompok" name="kelompok" value="<?php echo set_value('kelompok');?>">
@@ -91,7 +95,6 @@
 		    <input  class="form-control" id="tanaman" name="tanaman">
 		  </div>
 		  <button type="submit" class="btn btn-primary" value="Simpan"> Simpan</button>
-		<?php endforeach;?>
 		</form>
 </body>
 </html>
