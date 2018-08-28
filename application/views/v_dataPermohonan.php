@@ -31,6 +31,7 @@
 			<?php $no++; endforeach; ?>
 		</tbody>
 	</table>
+	<a href="<?php base_url('index.php/c_permohonan/login') ?>">back</a>
 </div>
 </body>
 </html>
