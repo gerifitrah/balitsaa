@@ -5,22 +5,33 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->library('form_validation');
-			$this->load->model('m_permohonan');
+			$this->load->model('M_permohonan');
 			$this->load->helper('url');
 
 		}
 
 	public function tampil(){
 		$nip_user = $this->session->userdata('loger');
-		$data['pegawai'] = $this->m_permohonan->dataPemohon($nip_user);
-		$data['blok'] = $this->m_permohonan->dataLahan();
+		$data['pegawai'] = $this->M_permohonan->dataPemohon($nip_user);
+		$data['blok'] = $this->M_permohonan->dataLahan();
 		$this->load->helper('url');
 		$this->load->view('v_permohonan',$data);
 	}
 
 	public function tampil_admin(){
-		$data['data']= $this->m_permohonan->data_permohonan()->result_array();
+		$data['data']= $this->M_permohonan->data_permohonan()->result_array();
 		$this->load->helper('url');
 		$this->load->view('v_dataPermohonan',$data);
+	}
+	public function tampil_peneliti(){
+		$this->load->view('v_dPeneliti');	
+	}
+
+	public function data_permohonan_user(){
+		$nip_user = $this->session->userdata('loger');
+		$data['laporan'] = $this->M_permohonan->data_permohonan_peneliti($nip_user);
+		$this->load->helper('url');
+		//print_r($data);
+		$this->load->view('v_data_permohonan_peneliti',$data);
 	}
 }

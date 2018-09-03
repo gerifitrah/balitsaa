@@ -43,7 +43,7 @@
 					push_api();
 				});
 			setInterval(function(){ 
-			 load_unseen_notification();;
+			 get_api();
 			}, 5000);
 			});
 		</script>

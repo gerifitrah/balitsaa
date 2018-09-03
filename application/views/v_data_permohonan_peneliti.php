@@ -41,9 +41,8 @@ height: 65px;
 /* Left column */
 
 	</style>
-</head>
 <body>
-	 	<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
 	 	    <div class="container-fluid">
 	 	     <div class="navbar-header">
 	 	      <a class="navbar-brand" href="<?= base_url('index.php/search/tampil_peneliti')?>">Home</a>
@@ -60,12 +59,34 @@ height: 65px;
 	 	    </div>
 	 	   </nav>
 <br>
-<footer class="page-footer black">
-          <div class="footer-copyright">
-            <div class="container">
-            ©
-            </div>
-          </div>
-</footer>
+	<div style="overflow-x:auto;">
+	<table border="2" >
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>No permohonan</th>
+				<th>NIP</th>
+				<th>Nama Peneliti</th>
+				<th>Judul Kegitan</th>
+				<th>Komuditas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $no=1;
+				foreach($laporan as $permohonan):?>
+			<tr>
+				<td><?php echo $no ?></td>
+				<td><?= $permohonan->no_permohonan?></td>
+				<td><?= $permohonan->nip?></td>
+				<td><?= $permohonan->nm_peneliti?></td>
+				<td><?= $permohonan->judul_kegiatan?></td>
+				<td><?= $permohonan->komoditas?></td>
+				<td><input type="button" name="view" value="view" id="<?php echo $permohonan->no_permohonan ?>" onClick="reply_click(this.id)"/></td>
+			<td><a class='btn' href="<?= base_url('index.php/c_permohonan/tampil_konfirmasi?id='.$permohonan->no_permohonan); ?>">Detail</a></td>
+			</tr>
+			<?php $no++; endforeach; ?>
+		</tbody>
+	</table>
+</div>
 </body>
 </html>

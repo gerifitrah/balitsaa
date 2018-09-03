@@ -18,8 +18,12 @@ class M_permohonan extends CI_Model {
 		 return $this->db->query("SELECT * FROM t_login tl INNER JOIN t_peneliti tp ON tp.nip = tl.nip WHERE tp.nip = '${nip_user}'")->result();
 	}
 
+	public function data_permohonan_peneliti($nip_user){
+		 return $this->db->query("SELECT * FROM t_permohonan WHERE nip = '${nip_user}'")->result();	
+	}
+
 	public function dataLahan(){
-		return $this->db->query('SELECT * FROM t_lahan')->result();
+		return $this->db->query('SELECT * FROM t_blok')->result();
 	}
 
 	public function dataLuasLahan(){
@@ -57,7 +61,8 @@ class M_permohonan extends CI_Model {
 				'kd_lahan'=>null,
 				'luas_lahan'=>$luas,
 				'tanaman_sebelumnya'=> $tanaman,
-				'keterangan'=> 'Belum Acc'
+				'keterangan'=> 'Belum Acc',
+				'status'=>0
 			);
 			// print_r($object);
 		return $this->db->insert('t_permohonan',$object);
