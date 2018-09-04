@@ -49,26 +49,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
     cursor: pointer;
 }
 </style>
-<body>
-
-	<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-			 <div class="navbar-header">
-				<a class="navbar-brand " href="<?= base_url('index.php/search/tampil_admin')?>">Home</a>
-			 </div>
-			 <ul class="nav navbar-nav">
-				 <li class="active"><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_pengguna')?>">USER</a></li>
-				 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a></li>
-			 </ul>
-			 <ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
-							<ul class="dropdown-menu"></ul>
-					</li>
-					<li><a class="navbar-brand" href="<?= base_url('index.php/c_permohonan/logout')?>">logout</a></li>
-			 </ul>
-			</div>
-		</nav>
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		 <div class="navbar-header">
+			<a class="navbar-brand " href="<?= base_url('index.php/search/tampil_admin')?>">Home</a>
+		 </div>
+		 <ul class="nav navbar-nav">
+			 <li class="active"><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_pengguna')?>">User</a></li>
+			 <li ><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_lahan')?>">Lahan</a></li>
+			 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a></li>
+		 </ul>
+		 <ul class="nav navbar-nav navbar-right">
+				<!-- <li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
+						<ul class="dropdown-menu"></ul>
+				</li> -->
+				<li><a class="navbar-brand" href="<?= base_url('index.php/c_permohonan/logout')?>">logout</a></li>
+		 </ul>
+		</div>
+	</nav>
 
 	<div style="overflow-x:auto;">
 	<table border="2" >

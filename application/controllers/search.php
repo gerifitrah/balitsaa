@@ -40,8 +40,15 @@
 	}
 
 	public function tampil_pengguna(){
-	$data['data']= $this->M_permohonan->getPengguna()->result_array();
-	$this->load->helper('url');
-	$this->load->view('v_dataPengguna',$data);
-}
+		$data['data']= $this->M_permohonan->getPengguna()->result_array();
+		$this->load->helper('url');
+		$this->load->view('v_dataPengguna',$data);
+	}
+
+	public function tampil_lahan(){
+		$data['data']= $this->M_permohonan->getLahan()->result_array();
+		$this->load->helper('url');
+		$this->load->view('v_dataLahan',$data);
+	}
+
 }

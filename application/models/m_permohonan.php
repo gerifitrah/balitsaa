@@ -84,6 +84,10 @@ public function data_permohonan(){
 
 	public function getPengguna(){
 		return $this->db->get('t_login');
-}
+	}
+
+	public function getLahan(){
+		return $this->db->get('t_lahan');
+	}
 
 }

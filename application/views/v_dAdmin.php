@@ -50,7 +50,8 @@ height: 65px;
 					<a class="navbar-brand " href="<?= base_url('index.php/search/tampil_admin')?>">Home</a>
 				 </div>
 				 <ul class="nav navbar-nav">
-					 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_pengguna')?>">USER</a></li>
+					 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_pengguna')?>">User</a></li>
+					 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_lahan')?>">Lahan</a></li>
 					 <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a></li>
 				 </ul>
 				 <ul class="nav navbar-nav navbar-right">
