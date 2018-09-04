@@ -18,13 +18,17 @@
 		$this->load->view('v_permohonan',$data);
 	}
 
-	public function tampil_admin(){
+	public function tampil_permohonan(){
 		$data['data']= $this->M_permohonan->data_permohonan()->result_array();
 		$this->load->helper('url');
 		$this->load->view('v_dataPermohonan',$data);
 	}
 	public function tampil_peneliti(){
-		$this->load->view('v_dPeneliti');	
+		$this->load->view('v_dPeneliti');
+	}
+
+	public function tampil_admin(){
+		$this->load->view('v_dAdmin');
 	}
 
 	public function data_permohonan_user(){
@@ -34,4 +38,10 @@
 		//print_r($data);
 		$this->load->view('v_data_permohonan_peneliti',$data);
 	}
+
+	public function tampil_pengguna(){
+	$data['data']= $this->M_permohonan->getPengguna()->result_array();
+	$this->load->helper('url');
+	$this->load->view('v_dataPengguna',$data);
+}
 }

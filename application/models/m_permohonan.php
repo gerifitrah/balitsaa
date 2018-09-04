@@ -19,7 +19,7 @@ class M_permohonan extends CI_Model {
 	}
 
 	public function data_permohonan_peneliti($nip_user){
-		 return $this->db->query("SELECT * FROM t_permohonan WHERE nip = '${nip_user}'")->result();	
+		 return $this->db->query("SELECT * FROM t_permohonan WHERE nip = '${nip_user}'")->result();
 	}
 
 	public function dataLahan(){
@@ -76,5 +76,14 @@ public function data_permohonan(){
   public function data_konfirmasi($kode,$table) {
         return $this->db->get_where($table,$kode);
     }
+
+    function get_data_permohonan($id){
+		$hasil=$this->db->query("SELECT * FROM t_permohonan WHERE no_permohonan='$id'");
+		return $hasil->result();
+	}
+
+	public function getPengguna(){
+		return $this->db->get('t_login');
+}
 
 }

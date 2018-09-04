@@ -72,7 +72,7 @@
 		    <input  class="form-control" id="tanaman" name="tanaman" value="<?= $b->keterangan?>" disabled>
 		  </div>
        <?php  endforeach; ?>
-			<a href="<?php echo site_url('search/tampil_admin') ?>">back</a>
+			<a href="<?php echo site_url('search/tampil_permohonan') ?>">back</a>
   </form>
 </body>
 </html>

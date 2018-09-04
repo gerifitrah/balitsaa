@@ -19,6 +19,11 @@ class M_api extends CI_Model {
 		$hasil=$this->db->query("SELECT * FROM t_lahan WHERE blok='$id' ORDER BY nomor ASC");
 		return $hasil->result();
 	}
+	function get_data_peneliti($id){
+		$hasil=$this->db->query("SELECT * FROM t_permohonan WHERE no_permohonan='$id'");
+		return $hasil->result();
+	}
+
 	function get_luas($id,$no){
 		$hasil=$this->db->query("SELECT * FROM t_lahan WHERE blok='$id' AND nomor='$no'");
 		return $hasil->result();

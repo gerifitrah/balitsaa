@@ -16,30 +16,30 @@ class C_permohonan extends CI_Controller {
 		$this->load->view('v_login');
 	}
 
-		public function login(){
+		public function login()
+		{
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$otoritas = $this->input->post('otorisasi');
+			$cek = $this->M_permohonan->proseslogin($username,$password,$otoritas);
+			$hasil=count($cek);
+			if ($hasil>0) {
+				if($otoritas == 'peneliti'){
+						$select = $this->db->get_where('t_login',array('username'=>$username, 'password'=>$username,'otoritas'=>$otoritas))->row();
+						$data = array('logged_in' =>true ,'loger'=> $username );
+						$this->session->set_userdata($data);
 
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$otoritas = $this->input->post('otorisasi');
-		$cek = $this->M_permohonan->proseslogin($username,$password,$otoritas);
-		$hasil=count($cek);
-		if ($hasil>0) {
-			if($otoritas == 'peneliti'){
+						//$this->load->view('v_dPeneliti');
+						redirect('search/tampil_peneliti')	;
+
+
+			} else if($otoritas == 'admin'){
 					$select = $this->db->get_where('t_login',array('username'=>$username, 'password'=>$username,'otoritas'=>$otoritas))->row();
-					$data = array('logged_in' =>true ,'loger'=> $username );
+							$data = array('logged_in' =>true ,'loger'=> $username );
 					$this->session->set_userdata($data);
 
-					//$this->load->view('v_dPeneliti');
-					redirect('search/tampil_peneliti')	;
-
-
-		} else if($otoritas == 'admin'){
-				$select = $this->db->get_where('t_login',array('username'=>$username, 'password'=>$username,'otoritas'=>$otoritas))->row();
-						$data = array('logged_in' =>true ,'loger'=> $username );
-				$this->session->set_userdata($data);
-
-				//$this->load->view('v_dAdmin');
-				redirect('search/tampil_admin');
+					//$this->load->view('v_dAdmin');
+					redirect('search/tampil_admin');
 
 		}
 		// $this->form_validation->set_rules('username', 'Username', 'required');
@@ -52,7 +52,7 @@ class C_permohonan extends CI_Controller {
 		// {
 		//
 		// }
-	}
+		}
 
 	}
 
@@ -82,19 +82,28 @@ class C_permohonan extends CI_Controller {
 	}
 
 
-	public function tampil_konfirmasi(){
-	$id = array(
-			'no_permohonan' => $this->input->get('id')
-		);
-		$data['detail'] = $this->M_permohonan->data_konfirmasi($id,'t_permohonan')->result();
-		$this->load->view('v_konfirmasi',$data);
+	public function tampil_konfirmasi()
+	{
+		$id = array(
+				'no_permohonan' => $this->input->get('id')
+			);
+			$data['detail'] = $this->M_permohonan->data_konfirmasi($id,'t_permohonan')->result();
+			$this->load->view('v_konfirmasi',$data);
 	}
-	public function tampil_detail(){
-	$id = array(
-			'no_permohonan' => $this->input->get('id')
-		);
-		$data['detail'] = $this->M_permohonan->data_konfirmasi($id,'t_permohonan')->result();
-		$this->load->view('v_dataPermohonan',$data);
+
+	public function tampil_detail()
+	{
+			$id = array(
+				'no_permohonan' => $this->input->get('id')
+			);
+			$data['detail'] = $this->M_permohonan->data_konfirmasi($id,'t_permohonan')->result();
+			$this->load->view('v_dataPermohonan',$data);
 	}
+
+	public function get_detail($id)
+    {
+        $data = $this->M_permohonan->get_data_permohonan($id);
+        echo json_encode($data);
+    }
 
 }
