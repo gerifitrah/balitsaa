@@ -19,9 +19,8 @@
 							<ul>
 								<li> <a href="<?= base_url('index.php/search/tampil_admin')?>">Home</a> </li>
 								<li> <a href="<?= base_url('index.php/search/tampil_pengguna')?>">User</a> </li>
-								<li> <a href="<?= base_url('index.php/search/tampil_lahan')?>">Lahan</a> </li>
 								<li> <a href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a> </li>
-								<li> <a href="<?= base_url('index.php/C_logout/logout')?>">Logout</a> </li>
+								<li> <a href="<?= base_url('index.php/c_permohonan/logout')?>">Logout</a> </li>
 							</ul>
 						</div>
 					</nav>
@@ -30,7 +29,7 @@
 		</div>
 		<div class="content">
 			<div class="topNav">
-				<h1>Data User</h1>
+				<h1>Form Permohonan</h1>
 			</div>
 			<div class="formPermohonan">
 				<table class="tCss">

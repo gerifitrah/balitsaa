@@ -7,14 +7,8 @@ class M_permohonan extends CI_Model {
 		return $res;
 	}
 
-	public function proseslogin($username,$password){
-		$this->db->where('username',$username);
-		$this->db->where('password',$password);
-		return $this->db->get('t_login')->row();
-	}
-
 	public function dataPemohon($nip_user){
-		 // return $this->db->query('SELECT * FROM t_peneliti AS pe INNER JOIN t_login AS lo WHERE pe.nip = "195407051979021001"')->result();
+
 		 return $this->db->query("SELECT * FROM t_login tl INNER JOIN t_peneliti tp ON tp.nip = tl.nip WHERE tp.nip = '${nip_user}'")->result();
 	}
 
@@ -69,15 +63,15 @@ class M_permohonan extends CI_Model {
 
 	}
 
-public function data_permohonan(){
-	return $this->db->get('t_permohonan');
-}
+	public function data_permohonan(){
+		return $this->db->get('t_permohonan');
+	}
 
   public function data_konfirmasi($kode,$table) {
         return $this->db->get_where($table,$kode);
     }
 
-    function get_data_permohonan($id){
+  function get_data_permohonan($id){
 		$hasil=$this->db->query("SELECT * FROM t_permohonan WHERE no_permohonan='$id'");
 		return $hasil->result();
 	}

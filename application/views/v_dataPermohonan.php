@@ -2,62 +2,71 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/css/index.css'); ?>">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <body>
-	<nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-       <div class="navbar-header">
-        <a class="navbar-brand " href="<?= base_url('index.php/search/tampil_admin')?>">Home</a>
-       </div>
-       <ul class="nav navbar-nav">
-         <li><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_pengguna')?>">User</a></li>
-         <li ><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_lahan')?>">Lahan</a></li>
-         <li class="active"><a class="navbar-brand" href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a></li>
-       </ul>
-       <ul class="nav navbar-nav navbar-right">
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
-              <ul class="dropdown-menu"></ul>
-          </li> -->
-          <li><a class="navbar-brand" href="<?= base_url('index.php/c_permohonan/logout')?>">logout</a></li>
-       </ul>
-      </div>
-    </nav>
-
-	<div style="overflow-x:auto;">
-	<table border="2" >
-		<thead>
-			<tr>
-				<th>No</th>
-				<th>No permohonan</th>
-				<th>NIP</th>
-				<th>Nama Peneliti</th>
-				<th>Judul Kegitan</th>
-				<th>Komuditas</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php $no=1;
-				foreach($data as $Permohonan):?>
-			<tr>
-				<td><?php echo $no ?></td>
-				<td><?php echo $Permohonan['no_permohonan']; ?></td>
-				<td><?php echo $Permohonan['nip']; ?></td>
-				<td><?php echo $Permohonan['nm_peneliti']; ?></td>
-				<td><?php echo $Permohonan['judul_kegiatan']; ?></td>
-				<td><?php echo $Permohonan['komoditas']; ?></td>
-				<td><a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Detail" onclick="get_data(<?= $Permohonan['no_permohonan'] ?>)"><i class="glyphicon glyphicon-eye-open"></i> Detail</a></td></td>
-			<td><a class='btn' href="<?= base_url('index.php/c_permohonan/tampil_konfirmasi?id='.$Permohonan['no_permohonan']); ?>">Konfirmasi</a></td>
-			</tr>
-			<?php $no++; endforeach; ?>
-		</tbody>
-	</table>
+<div id="divWrapper">
+	<div class="sideBar">
+		<div class="sideBarFixed">
+			<div class="topNav">
+				<h1>Balitsa</h1>
+			</div>
+			<div class="sideNav">
+				<nav>
+					<div class="sideList">
+						<ul>
+							<li> <a href="<?= base_url('index.php/search/tampil_admin')?>">Home</a> </li>
+							<li> <a href="<?= base_url('index.php/search/tampil_pengguna')?>">User</a> </li>
+							<li> <a href="<?= base_url('index.php/search/tampil_lahan')?>">Lahan</a> </li>
+							<li> <a href="<?= base_url('index.php/search/tampil_permohonan')?>">Konfirmasi</a> </li>
+							<li> <a href="<?= base_url('index.php/C_logout/logout')?>">Logout</a> </li>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="topNav">
+			<h1>Form Permohonan</h1>
+		</div>
+		<div class="formPermohonan">
+			<table class="tCss">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>No permohonan</th>
+						<th>NIP</th>
+						<th>Nama Peneliti</th>
+						<th>Judul Kegitan</th>
+						<th>Komuditas</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $no=1;
+						foreach($data as $Permohonan):?>
+					<tr>
+						<td><?php echo $no ?></td>
+						<td><?php echo $Permohonan['no_permohonan']; ?></td>
+						<td><?php echo $Permohonan['nip']; ?></td>
+						<td><?php echo $Permohonan['nm_peneliti']; ?></td>
+						<td><?php echo $Permohonan['judul_kegiatan']; ?></td>
+						<td><?php echo $Permohonan['komoditas']; ?></td>
+						<td><a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Detail" onclick="get_data(<?= $Permohonan['no_permohonan'] ?>)"><i class="glyphicon glyphicon-eye-open"></i> Detail</a></td></td>
+					<td><a class='btn' href="<?= base_url('index.php/C_permohonan/tampil_konfirmasi?id='.$Permohonan['no_permohonan']); ?>">Konfirmasi</a></td>
+					</tr>
+					<?php $no++; endforeach; ?>
+				</tbody>
+			</table>
+			<br>
+			<a class="btnSubmit" href="<?php echo base_url('index.php/Laporanpdf') ?>">Cetak</a>
+		</div>
+	</div>
 </div>
 </script>
 		<script type="text/javascript">
@@ -69,7 +78,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 			$(document).ready(function(){
 				function get_api(){
 					$.ajax({
-						url:"http://localhost/balitsaa/index.php/api/detail",
+						url:"http://localhost/balitsaa/index.php/Api/detail",
 						method:"GET",
 						dataType:"JSON",
 						success:function(data){
@@ -79,7 +88,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 				}
 				function push_api(){
 					$.ajax({
-						url:"http://localhost/balitsaa/index.php/api/detail",
+						url:"http://localhost/balitsaa/index.php/Api/detail",
 						method:"GET",
 						dataType:"JSON",
 						success:function(data){
@@ -98,130 +107,130 @@ body {font-family: Arial, Helvetica, sans-serif;}
 			});
 		</script>
 		<div class="modal fade" id="modal_form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Person Form</h3>
-            </div>
-            <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="id"/>
-                    <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">No. Permohonan</label>
-                            <div class="col-md-9">
-                                <input name="no" id="no" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nama Peneliti</label>
-                            <div class="col-md-9">
-                                <input name="nama" id="nama" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">NIP</label>
-                            <div class="col-md-9">
-                                <input name="nip" id="nip" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Kelompok Peneliti</label>
-                            <div class="col-md-9">
-                                <input name="kelompok" id="kelompok" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Penanggung Jawab Di Lapangan</label>
-                            <div class="col-md-9">
-                                <input name="penanggung" id="penanggung" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Sumber Dana</label>
-                            <div class="col-md-9">
-                                <input name="sumber" id="sumber" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Judul Kegiatan</label>
-                            <div class="col-md-9">
-                                <input name="judul" id="judul" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Kode Kegiatan</label>
-                            <div class="col-md-9">
-                                <input name="kode" id="kode" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Waktu Kegiatan Di Mulai</label>
-                            <div class="col-md-9">
-                                <input name="mulai" id="mulai" class="form-control" type="date" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Waktu Kegiatan Berakhir</label>
-                            <div class="col-md-9">
-                                <input name="berakhir" id="berakhir" class="form-control" type="date" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Komoditas</label>
-                            <div class="col-md-9">
-                                <input name="komoditas" id="komoditas" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Lokasi Lahan</label>
-                            <div class="col-md-9">
-                            	<label>Blok</label>
-                                <input name="blok" id="blok" class="form-control" type="text" disabled>
-                                <label>Nomor</label>
-                                <input name="nomor" id="nomor" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Luas Lahan</label>
-                            <div class="col-md-9">
-                                <input name="luas" id="luas" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Tanaman Sebelumnya</label>
-                            <div class="col-md-9">
-                                <input name="sebelum" id="sebelum" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Keterangan</label>
-                            <div class="col-md-9">
-                                <input name="keterangan" id="keterangan" class="form-control" type="text" disabled>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+		<div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            <h3 class="modal-title">Person Form</h3>
+		        </div>
+		        <div class="modal-body form">
+		            <form action="#" id="form" class="form-horizontal">
+		                <input type="hidden" value="" name="id"/>
+		                <div class="form-body">
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">No. Permohonan</label>
+		                        <div class="col-md-9">
+		                            <input name="no" id="no" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Nama Peneliti</label>
+		                        <div class="col-md-9">
+		                            <input name="nama" id="nama" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">NIP</label>
+		                        <div class="col-md-9">
+		                            <input name="nip" id="nip" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Kelompok Peneliti</label>
+		                        <div class="col-md-9">
+		                            <input name="kelompok" id="kelompok" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Penanggung Jawab Di Lapangan</label>
+		                        <div class="col-md-9">
+		                            <input name="penanggung" id="penanggung" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Sumber Dana</label>
+		                        <div class="col-md-9">
+		                            <input name="sumber" id="sumber" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Judul Kegiatan</label>
+		                        <div class="col-md-9">
+		                            <input name="judul" id="judul" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Kode Kegiatan</label>
+		                        <div class="col-md-9">
+		                            <input name="kode" id="kode" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Waktu Kegiatan Di Mulai</label>
+		                        <div class="col-md-9">
+		                            <input name="mulai" id="mulai" class="form-control" type="date" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Waktu Kegiatan Berakhir</label>
+		                        <div class="col-md-9">
+		                            <input name="berakhir" id="berakhir" class="form-control" type="date" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Komoditas</label>
+		                        <div class="col-md-9">
+		                            <input name="komoditas" id="komoditas" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Lokasi Lahan</label>
+		                        <div class="col-md-9">
+		                          <label>Blok</label>
+		                            <input name="blok" id="blok" class="form-control" type="text" disabled>
+		                            <label>Nomor</label>
+		                            <input name="nomor" id="nomor" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Luas Lahan</label>
+		                        <div class="col-md-9">
+		                            <input name="luas" id="luas" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Tanaman Sebelumnya</label>
+		                        <div class="col-md-9">
+		                            <input name="sebelum" id="sebelum" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                    <div class="inputWrapper">
+		                        <label class="control-label col-md-3">Keterangan</label>
+		                        <div class="col-md-9">
+		                            <input name="keterangan" id="keterangan" class="form-control" type="text" disabled>
+		                            <span class="help-block"></span>
+		                        </div>
+		                    </div>
+		                </div>
+		            </form>
+		        </div>
+		    </div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 <!-- End Bootstrap modal -->
 <script src="<?php echo base_url('asset/js/jquery-2.2.3.min.js')?>"></script>
 <script src="<?php echo base_url('asset/js/bootstrap.min.js')?>"></script>

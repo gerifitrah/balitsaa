@@ -1,44 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/css/materialize.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/css/index.css'); ?>">
 	<title>Login</title>
 
   </style>
 </head>
-<body style="margin-top: 80px;"align="center">
-
-<div  class="container" style="border-radius: 5px;border: 1px solid #000;padding: 20px;margin-top: 20px;box-shadow: 4px 4px #bbb;width: 30%; ">
-	<div class="row" >
-    <h2>Login</h2>
-    <hr>
+<body>
+<div style="position: absolute;top: 0;left: 0;width: 100%;background:linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('https://i.pinimg.com/originals/3a/c0/61/3ac061ea26c85e461741890fe4ea0bef.jpg');background-repeat:no-repeat;background-size:cover;height:100vh">
+	<div class="formPermohonan" style="width:400px;background:#fff" >
+    <h2 style="margin-bottom:20px;">Login</h2>
     <?php echo $this->session->flashdata('err'); ?>
-    <form class="col s12" method="post" action="<?= base_url('index.php/c_permohonan/login'); ?>">
-      <div class="row">
-        <div class="input-field col s12 ">
-          <label >Username</label><br/>
-          <input name="username" type="text" class="validate">
+    <form method="post" action="<?= base_url('index.php/C_login/login'); ?>">
+        <div class="inputWrapper">
+          <input name="username" type="text" class="validate" placeholder="Username">
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <label >Password</label><br/>
-          <input name="password" type="password" class="validate"><br/>
+        <div class="inputWrapper">
+          <input name="password" type="password" class="validate" placeholder="Password"><br/>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
+        <div class="inputWrapper">
           <select name="otorisasi">
             <option selected>Sebagai</option>
             <option value="admin">Admin</option>
             <option value="peneliti">Peneliti</option>
           </select>
-          <input type="submit" class="btn" name="submit" value="Login"></input>
-        </div>
+          <button class="btnSubmit">Login</button>
       </div>
     </form>
     </div>
-  </div>
+</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="<?= base_url('asset/js/materialize.min.js'); ?>"></script>
   <script type="text/javascript">

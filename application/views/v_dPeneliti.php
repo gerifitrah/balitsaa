@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/css/materialize.css'); ?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('asset/css/index.css'); ?>">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title></title>
 <style>
 body {
@@ -43,29 +41,35 @@ height: 65px;
 	</style>
 </head>
 <body>
-	 	<nav class="navbar navbar-inverse">
-	 	    <div class="container-fluid">
-	 	     <div class="navbar-header">
-	 	      <a class="navbar-brand" href="<?= base_url('index.php/search/tampil_peneliti')?>">Home</a>
-	 	      <a class="navbar-brand" href="<?= base_url('index.php/search/data_permohonan_user')?>">History</a>
-	 	      <a class="navbar-brand" href="<?= base_url('index.php/search/tampil')?>">Permohonan</a>
-	 	      <a class="navbar-brand" href="<?= base_url('index.php/c_permohonan/logout')?>">logout</a>
-	 	     </div>
-	 	     <ul class="nav navbar-nav navbar-right">
-	 	      <li class="dropdown">
-	 	       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span></a>
-	 	       <ul class="dropdown-menu"></ul>
-	 	      </li>
-	 	     </ul>
-	 	    </div>
-	 	   </nav>
-<br>
-<footer class="page-footer black">
-          <div class="footer-copyright">
-            <div class="container">
-            ©
-            </div>
-          </div>
-</footer>
+	<div id="divWrapper">
+		<div class="sideBar">
+			<div class="sideBarFixed">
+				<div class="topNav">
+					<h1>Balitsa</h1>
+				</div>
+				<div class="sideNav">
+					<nav>
+						<div class="sideList">
+							<ul>
+								<li> <a href="<?= base_url('index.php/search/tampil_peneliti')?>">Home</a> </li>
+								<li> <a href="<?= base_url('index.php/search/tampil')?>">Permohonan</a> </li>
+								<li> <a href="<?= base_url('index.php/search/data_permohonan_user')?>">History</a> </li>
+								<li> <a href="<?= base_url('index.php/C_logout/logout')?>">Logout</a> </li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="topNav">
+				<h1>Form Permohonan</h1>
+			</div>
+			<div class="">
+
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
